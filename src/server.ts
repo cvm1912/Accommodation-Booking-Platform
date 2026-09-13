@@ -1,8 +1,10 @@
 import express from 'express';
 import {Express} from "express";
 
+import {loadEnv, serverConfig} from './configurations';
+
+
 const app : Express= express();
-const PORT : Number  = 8080;
 
 app.get('/ping',(req,res) => res.send('pong'));
-app.listen(PORT, () => console.log(`Server is listening on ${PORT}`));
+app.listen(serverConfig.PORT,  () => console.log(`Server is listening on ${serverConfig.PORT}`));
