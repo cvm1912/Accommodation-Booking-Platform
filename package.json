@@ -4,7 +4,7 @@
   "description": "**Scalable platform for searching, filtering, booking, and managing accommodations online.**",
   "main": "index.js",
   "scripts": {
-    "dev":"nodemon npx ts-node src/sndex.ts"
+    "dev": "npx tsx src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -19,13 +19,14 @@
   },
   "homepage": "https://github.com/cvm1912/Accommodation-Booking-Platform#readme",
   "dependencies": {
+    "dotenv": "^17.4.2",
     "express": "^5.2.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^26.5.1",
     "nodemon": "^3.1.14",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.23.13",
     "typescript": "^7.0.2"
   }
 }
