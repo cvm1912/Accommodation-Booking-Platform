@@ -141,3 +141,10 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Rotating log files
+application-*.log
+application-*.log.gz
+
+# Sequelize audit
+*-audit.json
