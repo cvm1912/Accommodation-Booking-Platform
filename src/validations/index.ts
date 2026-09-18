@@ -1,6 +1,6 @@
 import { ZodObject, ZodTypeAny } from 'zod';
 import { NextFunction, Request, Response } from 'express';
-import logger from '../configurations/logger';
+import logger from '../config/logger';
 
 export const validateQueryParams = (schema: ZodObject<Record<string, ZodTypeAny>>) => {
     return async (req: Request, res: Response, next: NextFunction) => {

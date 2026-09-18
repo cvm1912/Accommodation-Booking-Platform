@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from 'express'
-import logger from '../configurations/logger'
+import logger from '../config/logger'
 export const pingHandler = async (req:Request,res:Response, next: NextFunction)=>{
    try{
       logger.info("ping request recieved")
