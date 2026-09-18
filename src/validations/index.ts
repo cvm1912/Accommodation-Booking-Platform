@@ -1,33 +1,31 @@
-import { AnyZodObject } from "zod/v3"
-import { NextFunction, Request, Response } from "express"
+import { ZodObject, ZodTypeAny } from 'zod';
+import { NextFunction, Request, Response } from 'express';
+import logger from '../configurations/logger';
 
-export const validateQueryParams=(schema:AnyZodObject)=>{
-    return async (req:Request,res:Response,next:NextFunction)=>{
+export const validateQueryParams = (schema: ZodObject<Record<string, ZodTypeAny>>) => {
+    return async (req: Request, res: Response, next: NextFunction) => {
         try {
-           await schema.parseAsync(req.query);
-           next();
+            logger.info('Validating Query Params');
+            await schema.parseAsync(req.query);
+            logger.info('Query params are valid');
+            next();
         } catch (error) {
-            return res.status(400).json({
-                message:"Invalid Query Params",
-                success:false,
-                error:error
-            })
+            logger.error('Query params are Invalid');
+            return res.status(400).json({ message: 'Invalid Query Params', success: false, error });
         }
-    }
-}
+    };
+};
 
-export const validateRequestBody=(schema:AnyZodObject)=>{
-    return async (req:Request,res:Response,next:NextFunction)=>{
+export const validateRequestBody = (schema: ZodObject<Record<string, ZodTypeAny>>) => {
+    return async (req: Request, res: Response, next: NextFunction) => {
         try {
-           await schema.parseAsync(req.body);
-           console.log("request ody is valid");
-           next();
+            logger.info('Validating request body');
+            await schema.parseAsync(req.body);
+            logger.info('Request body is valid');
+            next();
         } catch (error) {
-            return res.status(400).json({
-                message:"Invalid Request Body",
-                success:false,
-                error:error
-            })
+            logger.error('Request body is Invalid');
+            return res.status(400).json({ message: 'Invalid Request Body', success: false, error });
         }
-    }
-}
+    };
+};

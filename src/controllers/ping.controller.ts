@@ -1,8 +1,10 @@
 import {NextFunction, Request, Response} from 'express'
-export const pingHandler = async (req:Request,res:Response, next: NextFunction): Promise<void>=>{
+import logger from '../configurations/logger'
+export const pingHandler = async (req:Request,res:Response, next: NextFunction)=>{
    try{
-      await res.status(200).json({
-      message:'pong',
+      logger.info("ping request recieved")
+      res.status(200).json({
+      message: req.body.message,
       success:true
    })
 
