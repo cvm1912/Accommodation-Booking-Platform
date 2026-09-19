@@ -1,7 +1,7 @@
 
-
+import {QueryInterface} from 'sequelize'
 module.exports = {
-    async up(queryInterface) {
+    async up(queryInterface:QueryInterface) {
        // await queryInterface.createTable("hotels", {
     //   id: {
     //     type: "INTEGER",
@@ -45,7 +45,7 @@ module.exports = {
         `);
     },
 
-    async down(queryInterface) {
+    async down(queryInterface:QueryInterface) {
         await queryInterface.sequelize.query(`
             DROP TABLE IF EXISTS hotels;
         `);
