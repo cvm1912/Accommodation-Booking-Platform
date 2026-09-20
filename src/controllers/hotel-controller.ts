@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { createHotelDto } from '../Dto/Hotel-dto';
-import { createHotelService } from "../service/hotel-service";
+import { createHotelService, getAllHotels } from "../service/hotel-service";
 
 export async function createHotelHandler(req: Request, res: Response, next: NextFunction):Promise<void>{
   try{
@@ -16,4 +16,17 @@ export async function createHotelHandler(req: Request, res: Response, next: Next
   } catch(err) {
     next(err);
   }
+}
+
+export async function getALLhotel(req:Request, res:Response, next:NextFunction){
+    try{
+        const hotelResponse = await getAllHotels();
+        res.status(200).json({
+            message:'Fetched all hotels',
+            success:true,
+            data:hotelResponse
+        });
+    }catch(err){
+        next(err);
+    }
 }
